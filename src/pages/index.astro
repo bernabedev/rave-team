@@ -1,4 +1,5 @@
 ---
+import Navbar from "../components/Navbar.astro";
 import { ParallaxSection } from "../components/Parallax";
 import Layout from "../layouts/Layout.astro";
 import "../styles/global.css";
@@ -8,8 +9,7 @@ import "../styles/global.css";
   <main
     class="w-full h-full min-h-screen bg-contain bg-[url('/images/background.webp')]"
   >
-    <div class="relative min-h-[700px]">
+      <Navbar />
       <ParallaxSection client:only="react" />
-    </div>
   </main>
 </Layout>
