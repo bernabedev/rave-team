@@ -7,9 +7,32 @@ import "../styles/global.css";
 
 <Layout>
   <main
-    class="w-full h-full min-h-screen bg-contain bg-[url('/images/background.webp')]"
+    class="w-full h-full relative min-h-screen bg-cover bg-[url('/images/background.webp')] bg-no-repeat bg-center"
   >
-      <Navbar />
-      <ParallaxSection client:only="react" />
+    <Navbar />
+    <ParallaxSection client:only="react" />
+    <div
+      class="font-luckiest-guy absolute w-full text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center flex flex-col items-center gap-11"
+    >
+      <p
+        class="px-10 bg-primary/50 py-5 border-3 text-xl border-white rounded-full"
+      >
+        The Rave Team
+      </p>
+      <h1
+        class="text-[92px] leading-[92px] text-shadow-[7px_10px_0_rgba(0,0,0,1)]"
+      >
+        FLASHY STORIES,<br /> DERANGED EXPERIENCES
+      </h1>
+      <a
+        href="https://store.steampowered.com/app/3044510/Space_Diva/"
+        target="_blank"
+        class="text-black hover:shadow-[3px_3px_0_rgba(0,0,0,1)] transition duration-150 ease-in-out hover:translate-[8px] flex gap-2 shadow-[10px_10px_0_rgba(0,0,0,1)] bg-white px-8 py-7 text-4xl"
+      >
+        <img src="/svgs/steam.svg" class="w-10 h-10 inline-block" />
+        WISHLIST SPACE DIVA
+      </a>
+    </div>
   </main>
+  <div>Hola esto es otra sección</div>
 </Layout>
