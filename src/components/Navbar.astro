@@ -1,3 +1,7 @@
+---
+import Link from './Link.astro'
+---
+
 <nav
   class="fixed flex w-full m-auto items-center justify-center top-8 left-0 z-50"
 >
@@ -14,10 +18,10 @@
     <div
       class="flex text-4xl inner-text-shadow [&>a]:text-shadow-[6px_6px_0_rgba(0,0,0,1)] font-luckiest-guy items-center gap-8 text-white [&>a]:hover:text-shadow-[3px_3px_0_rgba(0,0,0,1)] [&>a]:transition [&>a]:duration-150 [&>a]:ease-in-out [&>a]:hover:translate-[6px]"
     >
-      <a href="#">GAMES</a>
-      <a href="#">NEWS</a>
-      <a href="#">ABOUT</a>
-      <a href="#">CONTACT</a>
+      <Link to="#">GAMES</Link>
+      <Link to="#">NEWS</Link>
+      <Link to="#">ABOUT</Link>
+      <Link to="#">CONTACT</Link>
     </div>
   </section>
 </nav>
