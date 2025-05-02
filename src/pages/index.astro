@@ -3,6 +3,7 @@ import Link from "../components/Link.astro";
 import Navbar from "../components/Navbar.astro";
 import { ParallaxSection } from "../components/Parallax";
 import Layout from "../layouts/Layout.astro";
+import Icon from "../components/Icon.astro";
 import "../styles/global.css";
 ---
 
@@ -30,7 +31,7 @@ import "../styles/global.css";
         to="https://store.steampowered.com/app/3044510/Space_Diva/"
         class="text-black hover:shadow-[3px_3px_0_rgba(0,0,0,1)] transition duration-150 ease-in-out hover:translate-[8px] flex gap-2 shadow-[10px_10px_0_rgba(0,0,0,1)] bg-white px-8 py-7 text-4xl"
       >
-        <img src="/svgs/steam.svg" class="w-10 h-10 inline-block" />
+        <Icon name="steam" class="size-10 inline-block" />
         WISHLIST SPACE DIVA
       </Link>
     </div>
