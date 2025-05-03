@@ -2,35 +2,41 @@
 import Link from "./Link.astro";
 ---
 
-<section>
-  <h2>LATEST NEWS</h2>
-  <div>
-    <div>
-      <h3>NEW 1</h3>
-      <p>
+<section class="flex flex-col gap-14 pt-[72px] bg-primary text-white">
+  <h2 class="text-6xl font-luckiest-guy self-center">LATEST NEWS</h2>
+  <div class="flex flex-col">
+    <div
+      class="flex flex-col gap-4 bg-white text-primary py-[26px] px-[100px] shadow-[0_0_0_3px_rgba(0,0,0,1)] w-3/5 place-items-end"
+    >
+      <h3 class="font-luckiest-guy text-2xl">NEW 1</h3>
+      <p class="text-xl max-w-[696px]">
         A game development studio creating projects that primarily we would play
         ourselves first, and then aim at massive audiences. A game development
         studio creating projects that primarily we would
       </p>
-      <Link external to="/"> Read more </Link>
+      <Link external to="/" class="text-base font-bold"> Read more </Link>
     </div>
-    <div>
-      <h3>NEW 2</h3>
-      <p>
+    <div
+      class="flex flex-col gap-4 bg-white text-primary py-[26px] px-[100px] shadow-[0_0_0_3px_rgba(0,0,0,1)] w-3/5 self-end"
+    >
+      <h3 class="font-luckiest-guy text-2xl">NEW 1</h3>
+      <p class="text-xl max-w-[696px]">
         A game development studio creating projects that primarily we would play
         ourselves first, and then aim at massive audiences. A game development
         studio creating projects that primarily we would
       </p>
-      <Link external to="/"> Read more </Link>
+      <Link external to="/" class="text-base font-bold"> Read more </Link>
     </div>
-    <div>
-      <h3>NEW 3</h3>
-      <p>
+    <div
+      class="flex flex-col gap-4 bg-white text-primary py-[26px] px-[100px] shadow-[0_0_0_3px_rgba(0,0,0,1)] w-3/5 place-items-end"
+    >
+      <h3 class="font-luckiest-guy text-2xl">NEW 1</h3>
+      <p class="text-xl max-w-[696px]">
         A game development studio creating projects that primarily we would play
         ourselves first, and then aim at massive audiences. A game development
         studio creating projects that primarily we would
       </p>
-      <Link external to="/"> Read more </Link>
+      <Link external to="/" class="text-base font-bold"> Read more </Link>
     </div>
   </div>
   <Link external to="/"> VIEW ALL </Link>
