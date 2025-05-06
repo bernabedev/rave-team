@@ -10,10 +10,11 @@ import "../styles/global.css";
 ---
 
 <Layout>
+  <Navbar />
+
   <main
     class="w-full h-full relative min-h-screen bg-cover bg-[url('/images/background.webp')] bg-no-repeat bg-center"
   >
-    <Navbar />
     <ParallaxSection client:only="react" />
     <div
       class="font-luckiest-guy absolute w-full text-white top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center flex flex-col items-center gap-11"
