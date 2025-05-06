@@ -2,7 +2,7 @@
 import Download from "./ui/Download.astro";
 ---
 
-<section class="text-white flex flex-col justify-end h-[480px]">
+<section class="text-white flex flex-col justify-end h-[480px] relative">
   <h2 class="text-6xl font-luckiest-guy ml-[54px] mb-12">
     JOIN OUR NEWSLETTER
   </h2>
@@ -30,6 +30,21 @@ import Download from "./ui/Download.astro";
       PRESS KIT
     </button>
   </div>
+  <img
+    src="/public/images/star-lg.png"
+    alt="star large"
+    class="absolute top-[90px] right-[88px]"
+  />
+  <img
+    src="/public/images/star-md.png"
+    alt="star large"
+    class="absolute top-[46px] right-[178px]"
+  />
+  <img
+    src="/public/images/star-sm.png"
+    alt="star large"
+    class="absolute top-[185px] right-[75px]"
+  />
 </section>
 <style>
   .input-search:focus {
