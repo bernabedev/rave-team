@@ -2,8 +2,20 @@
 
 @theme {
   --font-luckiest-guy: "Luckiest Guy", sans-serif;
+
   --color-primary: #272035;
   --color-secondary: #c31c96;
+
+  --text-hero-title: clamp(3.875rem, 6vw, 5.75rem);
+  --text-hero-title--line-height: 1;
+  --text-hero-action: clamp(1.5rem, 3vw, 2.625rem);
+  --text-hero-action--line-height: 1;
+}
+
+@layer components {
+  .theme-shadow-text {
+    @apply text-shadow-[6px_6px_0_rgba(0,0,0,1)] transition duration-150 ease-in-out hover:translate-1.5 hover:text-shadow-[3px_3px_0_rgba(0,0,0,1)];
+  }
 }
 
 @font-face {
