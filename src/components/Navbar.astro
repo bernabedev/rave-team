@@ -1,11 +1,11 @@
 ---
-import Link from './Link.astro'
+import Link from "./Link.astro";
 ---
 
 <nav
   class="fixed flex w-full m-auto items-center justify-center top-8 left-0 z-50"
 >
-  <section class="flex justify-between max-w-7xl w-full">
+  <section class="flex justify-between max-w-7xl w-full px-8">
     <!-- <section
     class="border border-[#aa8be9]/50 bg-gradient-to-b from-[#aa8be9]/50 to-[#aa8be9]/10 rounded-full w-fit h-fit mt-8 backdrop-blur-md"
     > -->
@@ -15,13 +15,24 @@ import Link from './Link.astro'
       RS
     </div>
     <!-- </section> -->
-    <div
-      class="flex text-4xl inner-text-shadow [&>a]:text-shadow-[6px_6px_0_rgba(0,0,0,1)] font-luckiest-guy items-center gap-8 text-white [&>a]:hover:text-shadow-[3px_3px_0_rgba(0,0,0,1)] [&>a]:transition [&>a]:duration-150 [&>a]:ease-in-out [&>a]:hover:translate-[6px]"
+    <ul
+      class="flex text-2xl tracking-wider inner-text-shadow font-luckiest-guy items-center gap-8 text-white"
     >
-      <Link to="#">GAMES</Link>
-      <Link to="#">NEWS</Link>
-      <Link to="#">ABOUT</Link>
-      <Link to="#">CONTACT</Link>
-    </div>
+      <li class="theme-shadow-text lg:hidden">
+        <Link to="#">MENU</Link>
+      </li>
+      <li class="hidden theme-shadow-text lg:block">
+        <Link to="#">GAMES</Link>
+      </li>
+      <li class="hidden theme-shadow-text lg:block">
+        <Link to="#">NEWS</Link>
+      </li>
+      <li class="hidden theme-shadow-text lg:block">
+        <Link to="#">ABOUT</Link>
+      </li>
+      <li class="hidden theme-shadow-text lg:block">
+        <Link to="#">CONTACT</Link>
+      </li>
+    </ul>
   </section>
 </nav>
