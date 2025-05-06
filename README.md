@@ -1,48 +1,92 @@
-# Astro Starter Kit: Basics
+<div align="center">
 
-```sh
-pnpm create astro@latest -- --template basics
+# 🌐 Welcome to Rave Team
+
+![GitHub stars](https://img.shields.io/github/stars/afordigital/rave-team?style=social)
+![GitHub forks](https://img.shields.io/github/forks/afordigital/rave-team?style=social)
+![GitHub issues](https://img.shields.io/github/issues/afordigital/rave-team)
+![Contributors](https://img.shields.io/github/contributors/afordigital/rave-team)
+
+This is the repo of Rave Team
+
+[Figma Design
+](https://www.figma.com/design/76mKJzTw9uRNR9hR5GfIdc/Space-Diva-Web?node-id=0-1&t=Pk5pBRNuSguPh3nQ-1) · [Report a bug](https://github.com/afordigital/rave-team/issues)
+
+</div>
+
+## Screenshots
+
+![image](https://i.imgur.com/laDwask.png)
+
+## 📚 Table of Contents
+
+- [🌐 Welcome to Rave Team](#-welcome-to-rave-team)
+  - [📚 Table of Contents](#-table-of-contents)
+  - [🚀 Getting Started](#-getting-started)
+    - [📦 Building for Production](#-building-for-production)
+    - [🔍 Preview Production Build](#-preview-production-build)
+  - [🤝 Contribute](#-contribute)
+  - [👥 Authors](#-authors)
+  - [🛠️ Stack](#️-stack)
+
+## 🚀 Getting Started
+
+1. Clone or fork this repository
+
+   ```sh
+   git clone https://github.com/afordigital/rave-team.git
+   ```
+
+2. Install dependencies
+
+   ```bash
+   pnpm install
+   ```
+
+3. Run the project
+   ```bash
+   pnpm run dev
+   ```
+4. Open your browser and visit
+
+   [http://localhost:4321 🌺](http://localhost:4321)
+
+### 📦 Building for Production
+
+To create a production-ready build:
+
+```shellscript
+# Using pnpm
+pnpm build
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+### 🔍 Preview Production Build
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+To preview the production build locally:
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```shellscript
+# Using pnpm
+pnpm preview
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🤝 Contribute
 
-## 🧞 Commands
+If you want to contribute to this project, you can do so by reading the [Contribution Guide](./CONTRIBUTING.md).
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+## 👥 Authors
 
-## 👀 Want to learn more?
+<a href="https://github.com/afordigital">
+   <img width="50px" src="https://avatars.githubusercontent.com/u/43246362?v=4" />
+</a>
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+**Thanks to all the contributors who have made this project possible!**
+
+[![Contributors](https://contrib.rocks/image?repo=afordigital/rave-team)](https://github.com/afordigital/rave-team/graphs/contributors)
+
+## 🛠️ Stack
+
+![Astro](https://img.shields.io/badge/Astro-ff5d01?style=for-the-badge&logo=astro&logoColor=ff5d0100&labelColor=191919) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) <img src= "https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white"> ![TAILWIND](https://img.shields.io/badge/Tailwind_CSS-grey?style=for-the-badge&logo=tailwind-css&logoColor=38B2AC)
+
+Made with ❤️ by [comuafor 🐀](https://discord.com/invite/comuafor)
