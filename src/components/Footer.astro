@@ -1,0 +1,41 @@
+---
+import Link from "./Link.astro";
+import Bluesky from "./ui/Bluesky.astro";
+import Youtube from "./ui/Youtube.astro";
+import Tiktok from "./ui/Tiktok.astro";
+import Instagram from "./ui/Instagram.astro";
+---
+
+<footer>
+  <div>
+    <Link
+      external
+      aria-label="Instagram logo icon"
+      to="https://discord.com/invite/comuafor"
+    >
+      <Instagram />
+    </Link>
+    <Link
+      external
+      aria-label="Tiktok logo icon"
+      to="https://www.youtube.com/@afor_lives"
+    >
+      <Tiktok />
+    </Link>
+    <Link
+      external
+      aria-label="Youtube logo icon"
+      to="https://www.twitch.tv/afor_digital"
+    >
+      <Youtube />
+    </Link>
+    <Link
+      external
+      aria-label="Bluesky logo icon"
+      to="https://www.twitch.tv/afor_digital"
+    >
+      <Bluesky />
+    </Link>
+  </div>
+  <p>Designed and Developed by <Link external to="/">Comuafor</Link></p>
+</footer>
