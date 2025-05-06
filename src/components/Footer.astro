@@ -7,7 +7,7 @@ import Instagram from "./ui/Instagram.astro";
 ---
 
 <footer
-  class="w-full bg-secondary text-white pt-[82px] pb-7 px-12 flex flex-col gap-[108px] items-end justify-center"
+  class="w-full bg-secondary text-white pt-[82px] pb-7 px-12 flex flex-col gap-[108px] items-end justify-center background-diagonal"
 >
   <div class="flex gap-2 items-center justify-center">
     <div class="group relative">
@@ -78,8 +78,8 @@ import Instagram from "./ui/Instagram.astro";
     > 💓
   </p>
 </footer>
-<style>
-  footer {
+<style is:global>
+  .background-diagonal {
     clip-path: polygon(100% 0%, 0% 100%, 100% 100%);
   }
 </style>
