@@ -7,6 +7,9 @@ import Footer from "../components/Footer.astro";
 import LastNews from "../components/LastNews.astro";
 import { ParallaxSection } from "../components/Parallax";
 import "../styles/global.css";
+import SpaceDivaSection from "../components/SpaceDivaSection.astro";
+import AboutUs from "../components/AboutUs.astro";
+import Form from "../components/Form.astro";
 ---
 
 <Layout>
@@ -37,7 +40,11 @@ import "../styles/global.css";
       </Link>
     </div>
   </main>
+
   <div>Hola esto es otra sección</div>
+  <SpaceDivaSection />
   <LastNews />
+  <AboutUs />
+  <Form />
   <Footer />
 </Layout>
