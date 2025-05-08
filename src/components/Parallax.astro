@@ -2,7 +2,7 @@
 const svgInstancesData = [
   { top: "10%", left: "15%", opacity: "0.8", depth: 0.1, idSuffix: "1" },
   { top: "75%", left: "20%", opacity: "0.5", depth: 0.15, idSuffix: "2" },
-  { top: "50%", left: "50%", opacity: "0.9", depth: 0.12, idSuffix: "3" },
+  { top: "70%", left: "50%", opacity: "0.9", depth: 0.12, idSuffix: "3" },
   { top: "25%", left: "80%", opacity: "0.6", depth: 0.18, idSuffix: "4" },
   { top: "85%", left: "70%", opacity: "0.7", depth: 0.16, idSuffix: "5" },
 ];
@@ -15,7 +15,7 @@ const svgInstancesData = [
   <div
     class="absolute h-[105%] top-[calc(1rem-2.5%)] left-[-2.5%] w-[105%] parallax-layer"
     data-depth="0.05"
-    style="transform: translate(14.721px, -4.20771px); transition: transform 0.1s ease-out;"
+    style="transform: translate(0px, 0px); transition: transform 0.1s ease-out;"
   >
     <img
       alt="Elementos en primer plano"
@@ -30,6 +30,7 @@ const svgInstancesData = [
     class="absolute parallax-layer"
     data-depth="0.2"
     style="left: 20%; top: 5%; transition: transform 0.2s ease-out;"
+    id="blue-layer"
   >
     <img
       alt="Elemento azul"
@@ -47,6 +48,7 @@ const svgInstancesData = [
     class="absolute parallax-layer"
     data-depth="0.3"
     style="left: 70%; top: 25%;  transition: transform 0.2s ease-out;"
+    id="cyan-layer"
   >
     <img
       alt="Elemento cian"
@@ -64,6 +66,7 @@ const svgInstancesData = [
     class="absolute parallax-layer"
     data-depth="0.25"
     style="left: 80%; top: 50%; transition: transform 0.2s ease-out;"
+    id="purple-layer"
   >
     <img
       alt="Elemento púrpura"
@@ -147,10 +150,10 @@ const svgInstancesData = [
       return;
     }
 
-    const strength = 140; // Ajusta este valor para controlar la velocidad de movimiento
+    const strength = 140; // Ajusta este valor para controlar la velocidad de movimiento parallax
     const svgTemplate = document.getElementById("parallax-svg-template");
     const svgInstancesContainer = document.getElementById(
-      "svg-instances-container"
+      "svg-instances-container",
     );
 
     if (!svgTemplate || !svgInstancesContainer) {
@@ -158,6 +161,7 @@ const svgInstancesData = [
       return;
     }
 
+    // --- SVG Cloning (no changes here) ---
     svgInstancesData.forEach((data) => {
       const clone = svgTemplate.cloneNode(true);
       clone.id = `parallax-svg-instance-${data.idSuffix}`;
@@ -184,11 +188,39 @@ const svgInstancesData = [
           g.setAttribute("filter", `url(#${newFilter1Id})`);
         }
       });
-
       svgInstancesContainer.appendChild(clone);
     });
+    // --- End SVG Cloning ---
 
     const layers = Array.from(container.querySelectorAll(".parallax-layer"));
+
+    // Define floating parameters for specific layers
+    const floatingConfigs = {
+      "blue-layer": {
+        ampX: 8,
+        ampY: 10,
+        speedX: 0.0003,
+        speedY: 0.00035,
+        phaseX: 0,
+        phaseY: Math.PI / 2,
+      },
+      "cyan-layer": {
+        ampX: 6,
+        ampY: 8,
+        speedX: 0.00025,
+        speedY: 0.0004,
+        phaseX: Math.PI / 4,
+        phaseY: 0,
+      },
+      "purple-layer": {
+        ampX: 10,
+        ampY: 7,
+        speedX: 0.00032,
+        speedY: 0.00028,
+        phaseX: Math.PI,
+        phaseY: Math.PI / 3,
+      },
+    };
 
     const initialTransforms = layers.map((layer) => {
       const currentTransform = layer.style.transform || "";
@@ -200,7 +232,7 @@ const svgInstancesData = [
 
       if (currentTransform) {
         const translateMatch = currentTransform.match(
-          /translate\(\s*([^,]+?)\s*,\s*([^)]+?)\s*\)/
+          /translate\(\s*([^,]+?)\s*,\s*([^)]+?)\s*\)/,
         );
         if (translateMatch) {
           const xValStr = translateMatch[1].trim();
@@ -223,7 +255,6 @@ const svgInstancesData = [
           } else if (yValStr.endsWith("px")) {
             baseY = parseFloat(yValStr);
           }
-
           otherTransforms = currentTransform
             .substring(translateMatch[0].length)
             .trim();
@@ -231,7 +262,8 @@ const svgInstancesData = [
           otherTransforms = currentTransform;
         }
       }
-      return {
+
+      const item = {
         element: layer,
         baseX,
         baseY,
@@ -240,57 +272,89 @@ const svgInstancesData = [
         otherTransforms,
         depth: parseFloat(layer.dataset.depth) || 0,
       };
+
+      // Add floating config if this layer has one
+      if (layer.id && floatingConfigs[layer.id]) {
+        item.isFloating = true;
+        item.floatConfig = floatingConfigs[layer.id];
+      }
+
+      return item;
     });
 
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
     let rafId = null;
+
     const handleMouseMove = (e) => {
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-      }
-      rafId = requestAnimationFrame(() => {
-        const { clientX, clientY } = e;
-        const centerX = window.innerWidth / 2;
-        const centerY = window.innerHeight / 2;
-        const deltaX = centerX === 0 ? 0 : (clientX - centerX) / centerX;
-        const deltaY = centerY === 0 ? 0 : (clientY - centerY) / centerY;
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    };
 
-        initialTransforms.forEach((item) => {
-          const {
-            element,
-            baseX,
-            baseY,
-            usesCalcX,
-            usesCalcY,
-            otherTransforms,
-            depth,
-          } = item;
+    const animate = () => {
+      const time = performance.now();
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
 
-          if (depth === 0 || isNaN(baseX) || isNaN(baseY)) {
-            return;
-          }
+      // Calculate deltaX, deltaY based on the *current* mouse position
+      // This makes the parallax responsive even if the mouse stops moving
+      const deltaX = centerX === 0 ? 0 : (mouseX - centerX) / centerX;
+      const deltaY = centerY === 0 ? 0 : (mouseY - centerY) / centerY;
 
-          const moveX = deltaX * depth * strength;
-          const moveY = deltaY * depth * strength;
+      initialTransforms.forEach((item) => {
+        const {
+          element,
+          baseX,
+          baseY,
+          usesCalcX,
+          usesCalcY,
+          otherTransforms,
+          depth,
+          isFloating,
+          floatConfig,
+        } = item;
 
-          const finalX = baseX + moveX;
-          const finalY = baseY + moveY;
+        let parallaxMoveX = 0;
+        let parallaxMoveY = 0;
 
-          let newTranslateXStr = `${finalX.toFixed(3)}px`;
-          let newTranslateYStr = `${finalY.toFixed(3)}px`;
+        if (depth !== 0 && !isNaN(baseX) && !isNaN(baseY)) {
+          parallaxMoveX = deltaX * depth * strength;
+          parallaxMoveY = deltaY * depth * strength;
+        }
 
-          if (usesCalcX) {
-            newTranslateXStr = `calc(-50% + ${finalX.toFixed(3)}px)`;
-          }
-          if (usesCalcY) {
-            newTranslateYStr = `calc(-50% + ${finalY.toFixed(3)}px)`;
-          }
+        let floatOffsetX = 0;
+        let floatOffsetY = 0;
 
-          const newTransform = `translate(${newTranslateXStr}, ${newTranslateYStr}) ${otherTransforms}`;
-          element.style.transform = newTransform.trim();
-        });
+        if (isFloating && floatConfig) {
+          floatOffsetX =
+            floatConfig.ampX *
+            Math.sin(time * floatConfig.speedX + floatConfig.phaseX);
+          floatOffsetY =
+            floatConfig.ampY *
+            Math.cos(time * floatConfig.speedY + floatConfig.phaseY);
+        }
+
+        const finalX = baseX + parallaxMoveX + floatOffsetX;
+        const finalY = baseY + parallaxMoveY + floatOffsetY;
+
+        let newTranslateXStr = `${finalX.toFixed(3)}px`;
+        let newTranslateYStr = `${finalY.toFixed(3)}px`;
+
+        if (usesCalcX) {
+          newTranslateXStr = `calc(-50% + ${finalX.toFixed(3)}px)`;
+        }
+        if (usesCalcY) {
+          newTranslateYStr = `calc(-50% + ${finalY.toFixed(3)}px)`;
+        }
+
+        const newTransform = `translate(${newTranslateXStr}, ${newTranslateYStr}) ${otherTransforms}`;
+        element.style.transform = newTransform.trim();
       });
+
+      rafId = requestAnimationFrame(animate);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
+    animate(); // Start the animation loop
   });
 </script>
